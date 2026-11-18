@@ -67,3 +67,13 @@ Upload all the project files to your CODD directory.
 - Additional extra rooms
 - Difficulty levels
 - Enhanced animations
+
+---
+
+## AI Assistance
+Generative AI tools were used to help:
+- Improving wording and cohesiveness of the storyline and hints.
+- Troubleshooting CSS styling issues and refinements.
+- Explaining PHP concepts and debugging syntax errors during development.
+
+All project requirements, implementation, integration, and final code were completed, reviewed, and verified by the team.
