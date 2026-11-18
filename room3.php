@@ -1,3 +1,4 @@
+
 <?php
 require_once 'game_functions.php';
 
@@ -29,14 +30,14 @@ if(isset($_POST['unlock'])){
     }
     else {
         wrongAnswer(3);
-        if ($_SESSION['room_attempts'][3] >= 1) {
-            $message = "Incorrect! Check how the switches are related to each other.";
-        }
-        elseif ($_SESSION['room_attempts'][3] >= 2) {
+
+        if ($_SESSION['room_attempts'][3] >= 3) {
             $message = "Still not right! Remember that exactly two switches must be activated.";
-        } 
-        else {
+        } elseif ($_SESSION['room_attempts'][3] == 2) {
+            $message = "Incorrect! Check how the switches are related to each other.";
+        } else {
             $message = "Incorrect! Try again. Think about how the switches are connected.";
+        }
     }
 }
 ?>
@@ -46,7 +47,7 @@ if(isset($_POST['unlock'])){
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Room3 - Final Security Lock</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">

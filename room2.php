@@ -1,3 +1,4 @@
+
 <?php
 require_once("game_functions.php");
 
@@ -18,12 +19,12 @@ if (isset($_POST['unlock'])){
     }
     else{
         wrongAnswer(2);
-        if ($_SESSION['room_attempts'][2] >= 1) {
-            $message = "Incorrect! Think about what happens to a sound when it bounces off a surface.";
-        } 
-        elseif ($_SESSION['room_attempts'][2] >= 2) {
+        if ($_SESSION['room_attempts'][2] >= 3) {
             $message = "Still not right! Remember, the answer is something that can be heard more than once.";
-        } 
+        }
+        elseif ($_SESSION['room_attempts'][2] == 2) {
+            $message = "Incorrect! Think about what happens to a sound when it bounces off a surface.";
+        }
         else {
             $message = "Incorrect! Try again. Think about a sound that comes back to you.";
         }
@@ -36,7 +37,7 @@ if (isset($_POST['unlock'])){
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Room2 - The Whispering Chamber</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>

@@ -14,7 +14,7 @@ function startGame() {
     $_SESSION['hints_used'] = 0;
     $_SESSION['room_attempts'] = [1 => 0, 2 => 0, 3 => 0];
     $_SESSION['room_hints'] = [1 => 0, 2 => 0, 3 => 0];
-    unset($_SESSION['end_time']);
+    unset($_SESSION['end_time'], $_SESSION['score_saved']);
 }
 
 function requireGameLogin() {
