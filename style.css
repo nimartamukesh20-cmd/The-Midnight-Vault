@@ -1,0 +1,483 @@
+
+:root {
+    --bg: #080b12;
+    --panel: #141a25;
+    --gold: #e4bc68;
+    --text: #f5f1e8;
+    --muted: #aab0be;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 6%;
+    border-bottom: 1px solid #393329;
+    background: #0d111b;
+}
+
+.logo {
+    color: var(--gold);
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+nav a {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: var(--gold);
+}
+
+.hero {
+    min-height: 75vh;
+    padding: 90px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at center, #283044 0%, #080b12 70%);
+}
+
+.vault-symbol {
+    font-size: 65px;
+    margin-bottom: 20px;
+}
+
+.eyebrow,
+.hero-note {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+h1 {
+    font-size: clamp(36px, 7vw, 76px);
+    letter-spacing: 4px;
+    line-height: 1.2;
+    margin: 16px 0;
+}
+
+h1 span {
+    color: var(--gold);
+}
+
+.story {
+    max-width: 600px;
+    color: var(--muted);
+    font-size: 18px;
+    margin: 20px auto 32px;
+}
+
+.primary-btn {
+    display: inline-block;
+    padding: 15px 38px;
+    background: var(--gold);
+    color: #101010;
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.primary-btn:hover,
+.primary-btn:focus-visible {
+    background: #f5d48c;
+    transform: translateY(-3px);
+}
+
+.hero-note {
+    margin-top: 26px;
+}
+
+.instructions {
+    padding: 70px 6%;
+    text-align: center;
+}
+
+.instructions h2 {
+    color: var(--gold);
+    letter-spacing: 3px;
+    font-size: 30px;
+}
+
+.instructions > p {
+    color: var(--muted);
+}
+
+.instruction-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1100px;
+    margin: 38px auto;
+}
+
+.instruction-card {
+    padding: 30px 22px;
+    background: var(--panel);
+    border: 1px solid #454032;
+    border-radius: 10px;
+}
+
+.card-icon {
+    color: var(--gold);
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.instruction-card h3 {
+    margin: 12px 0;
+}
+
+.instruction-card p {
+    color: var(--muted);
+}
+
+.score-note {
+    margin-top: 20px;
+}
+
+.site-footer {
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid #393329;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+    .site-header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .hero {
+        min-height: 65vh;
+        padding: 65px 18px;
+    }
+
+    .story {
+        font-size: 16px;
+    }
+
+    .instruction-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .primary-btn {
+        transition: none;
+    }
+}
+
+
+/* Login and registration pages */
+
+.auth-section {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background: radial-gradient(circle, #283044, #080b12 75%);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 450px;
+    background: var(--panel);
+    border: 1px solid #454032;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+}
+
+.auth-icon {
+    font-size: 42px;
+}
+
+.auth-card h1 {
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: var(--gold);
+}
+
+.auth-card > p {
+    color: var(--muted);
+}
+
+.auth-card form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.auth-card label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.auth-card input {
+    padding: 13px;
+    border-radius: 5px;
+    border: 1px solid #555b68;
+    background: #0b101a;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.auth-card input:focus {
+    outline: 2px solid var(--gold);
+}
+
+.auth-card button {
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.auth-link {
+    margin-top: 25px;
+}
+
+.auth-link a {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
+.auth-card .form-error {
+    color: #ffb4b4;
+    background: #481d24;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+@media (max-width: 500px) {
+    .auth-card {
+        padding: 25px 20px;
+    }
+}
+
+
+/* Room 1 — The Hidden Code */
+
+.room-section {
+    min-height: 85vh;
+    padding: 55px 20px;
+    background: radial-gradient(circle at top, #253047, #080b12 75%);
+}
+
+.room-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.room-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.score-display {
+    font-weight: bold;
+}
+
+.room-panel {
+    background: var(--panel);
+    border: 1px solid #454032;
+    border-radius: 12px;
+    padding: 35px;
+    text-align: center;
+}
+
+.room-panel h1 {
+    font-size: clamp(26px, 5vw, 42px);
+    color: var(--gold);
+}
+
+.room-story {
+    max-width: 600px;
+    margin: 20px auto 30px;
+    color: var(--muted);
+}
+
+.terminal {
+    padding: 30px 20px;
+    background: #090d12;
+    border: 2px solid #4c4330;
+    border-radius: 8px;
+}
+
+.terminal-status {
+    color: #ff7474;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.puzzle-code {
+    margin: 25px 0;
+    color: var(--gold);
+    font-size: clamp(30px, 7vw, 54px);
+    font-weight: bold;
+    letter-spacing: 8px;
+}
+
+.terminal-instruction {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.puzzle-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 380px;
+    margin: 30px auto;
+}
+
+.puzzle-form label {
+    font-weight: bold;
+}
+
+.puzzle-form input {
+    padding: 14px;
+    border: 1px solid #626879;
+    border-radius: 5px;
+    background: #0b101a;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.puzzle-form input:focus {
+    outline: 2px solid var(--gold);
+}
+
+.puzzle-form button {
+    cursor: pointer;
+}
+
+.room-message {
+    padding: 12px;
+    margin-top: 20px;
+    border: 1px solid #665333;
+    border-radius: 5px;
+    color: var(--gold);
+}
+
+.adaptive-feedback {
+    padding: 12px;
+    margin-top: 15px;
+    border-left: 3px solid var(--gold);
+    background: #242638;
+    color: var(--text);
+}
+
+.hint-panel {
+    margin-top: 35px;
+    padding: 25px;
+    background: #101521;
+    border: 1px solid #454032;
+    border-radius: 8px;
+}
+
+.hint-panel h2 {
+    color: var(--gold);
+}
+
+.hint-panel > p {
+    color: var(--muted);
+}
+
+.hint-item {
+    padding: 12px;
+    background: #232a38;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.hint-btn {
+    padding: 12px 22px;
+    margin-top: 15px;
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    background: transparent;
+    color: var(--gold);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hint-btn:hover,
+.hint-btn:focus-visible {
+    background: #30291d;
+}
+
+.attempt-counter {
+    margin-top: 25px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .room-panel {
+        padding: 20px 15px;
+    }
+
+    .puzzle-code {
+        letter-spacing: 3px;
+    }
+
+    .room-top {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+}
