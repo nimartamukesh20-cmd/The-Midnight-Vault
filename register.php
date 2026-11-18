@@ -17,35 +17,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($password !== $confirm) {
         $error = 'Passwords do not match.';
     } else {
-        // Shared account file used by login.php.
-        $usersFile = '/home/nimarta1/midnight_vault_users.json';
-        $users = [];
-
+        $usersFile = __DIR__ . '/users.txt';
         if (file_exists($usersFile)) {
-            $users = json_decode(
-                file_get_contents($usersFile),
-                true
-            ) ?: [];
+            $lines = file($usersFile, FILE_IGNORE_NEW_LINES);
+            foreach ($lines as $line) {
+                list($savedUser, $savedHash) = explode('|', $line);
+                if (strcasecmp($savedUser, $username) === 0) {
+                    $error = 'Username already exists. Please choose another.';
+                    break;
+                }
+            }
         }
-
-        if (isset($users[$username])) {
-            $error = 'This username is already taken.';
-        } else {
-            $users[$username] = password_hash(
-                $password,
-                PASSWORD_DEFAULT
-            );
-
-            if (file_put_contents(
-                $usersFile,
-                json_encode($users, JSON_PRETTY_PRINT),
-                LOCK_EX
-            ) === false) {
-                $error = 'Unable to create account. Please try again.';
+        if ($error === '') {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $newUser = $username . '|' . $hashedPassword . PHP_EOL;
+            if (file_put_contents($usersFile, $newUser, FILE_APPEND | LOCK_EX) === false) {
+                $error = "Unable to create account.";
             } else {
                 header('Location: login.php?registered=1');
-                exit;
+                exit();
             }
+            
         }
     }
 }
