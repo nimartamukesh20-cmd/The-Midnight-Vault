@@ -12,30 +12,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($username === '' || $password === '') {
         $error = 'Please enter your username and password.';
     } else {
-        $usersFile = dirname(__DIR__, 4) . '/midnight_vault_users.json';
-        $users = [];
-
+        $usersFile = __DIR__ . '/users.txt';
+        $loginSuccess = false;
         if (file_exists($usersFile)) {
-            $users = json_decode(
-                file_get_contents($usersFile),
-                true
-            ) ?: [];
+            $lines = file($usersFile, FILE_IGNORE_NEW_LINES);
+            foreach ($lines as $line) {
+                list($savedUser, $savedHash) = explode('|', $line);
+                if ($savedUser == $username && password_verify($password, $savedHash)) {
+                    $loginSuccess = true;
+                    break;
+                }
+            }
         }
-
-        $storedHash = $users[$username] ?? null;
-
-        if (is_string($storedHash) &&
-            password_verify($password, $storedHash)) {
-
+        if ($loginSuccess){
             session_regenerate_id(true);
             $_SESSION['username'] = $username;
-
-            // Start a new game after successful login.
             startGame();
-
             header('Location: room1.php');
-            exit;
-        } else {
+            exit();
+        }
+        else {
             $error = 'Invalid username or password.';
         }
     }
