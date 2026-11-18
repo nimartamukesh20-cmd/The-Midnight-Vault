@@ -19,7 +19,6 @@ $score = max(0, (int)($_SESSION['score'] ?? 0));
 $wrongAttempts = $_SESSION['wrong_attempts'] ?? 0;
 $hintsUsed = $_SESSION['hints_used'] ?? 0;
 
-// Handle counts stored either as numbers or per-room arrays.
 if (is_array($wrongAttempts)) {
     $wrongAttempts = array_sum($wrongAttempts);
 }
@@ -27,13 +26,12 @@ if (is_array($hintsUsed)) {
     $hintsUsed = array_sum($hintsUsed);
 }
 
-// Session-based leaderboard.
+//session-based leaderboard.
 if (!isset($_SESSION['leaderboard']) ||
     !is_array($_SESSION['leaderboard'])) {
     $_SESSION['leaderboard'] = [];
 }
 
-// Save only once for each completed game.
 if (empty($_SESSION['score_saved'])) {
     $_SESSION['leaderboard'][] = [
         'username' => $username,
@@ -44,7 +42,7 @@ if (empty($_SESSION['score_saved'])) {
     $_SESSION['score_saved'] = true;
 }
 
-// Highest scores first.
+//highest scores 
 usort($_SESSION['leaderboard'], function ($a, $b) {
     return $b['score'] <=> $a['score'];
 });

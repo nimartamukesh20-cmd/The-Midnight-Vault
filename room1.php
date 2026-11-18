@@ -2,7 +2,7 @@
 <?php
 require_once 'game_functions.php';
 
-// Only logged-in players who reached Room 1 can enter.
+//only logged-in players who reached Room 1 can enter.
 requireRoom(1);
 
 $error = '';
@@ -45,7 +45,7 @@ $hintsUsed = $_SESSION['room_hints'][1];
 $score = $_SESSION['score'];
 $attempts = $_SESSION['room_attempts'][1];
 
-// Rule-based adaptive feedback after repeated wrong answers.
+//rule-based adaptive feedback after repeated wrong answers.
 $feedback = '';
 if ($attempts >= 3) {
     $feedback = 'Security analysis: The symbols are part of a familiar numbering system.';
